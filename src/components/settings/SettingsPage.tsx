@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 
 export function SettingsPage() {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
 
   const getInitials = (name: string) => {
     return name
@@ -80,9 +80,9 @@ export function SettingsPage() {
               <div className="flex items-center gap-6 mb-8">
                 <div className="relative">
                   <Avatar className="h-20 w-20">
-                    <AvatarImage src={user?.profile_pic_url} alt={user?.full_name} />
+                    <AvatarImage src={profile?.profile_pic_url} alt={profile?.full_name} />
                     <AvatarFallback className="bg-[#0066FF] text-white text-xl">
-                      {user?.full_name ? getInitials(user.full_name) : 'U'}
+                      {profile?.full_name ? getInitials(profile.full_name) : 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <button className="absolute bottom-0 right-0 w-8 h-8 bg-[#0066FF] rounded-full flex items-center justify-center text-white hover:bg-[#0052CC] transition-colors">
@@ -90,10 +90,10 @@ export function SettingsPage() {
                   </button>
                 </div>
                 <div>
-                  <p className="font-medium text-white">{user?.full_name}</p>
+                  <p className="font-medium text-white">{profile?.full_name}</p>
                   <p className="text-sm text-gray-400">{user?.email}</p>
                   <Badge className="mt-2 bg-[#0066FF] text-white capitalize">
-                    {user?.plan} Plan
+                    {profile?.plan || 'free'} Plan
                   </Badge>
                 </div>
               </div>
@@ -107,7 +107,7 @@ export function SettingsPage() {
                   </Label>
                   <Input
                     id="fullName"
-                    defaultValue={user?.full_name}
+                    defaultValue={profile?.full_name}
                     className="mt-1.5"
                   />
                 </div>
@@ -131,7 +131,7 @@ export function SettingsPage() {
                   <Input
                     id="phone"
                     type="tel"
-                    defaultValue={user?.phone}
+                    defaultValue={profile?.phone}
                     className="mt-1.5"
                   />
                 </div>
@@ -142,7 +142,7 @@ export function SettingsPage() {
                   </Label>
                   <Input
                     id="profession"
-                    defaultValue={user?.profession}
+                    defaultValue={profile?.profession}
                     className="mt-1.5"
                   />
                 </div>
@@ -299,16 +299,16 @@ export function SettingsPage() {
                 <h3 className="text-lg font-semibold text-white mb-6">Current Plan</h3>
                 <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-100">
                   <div>
-                    <p className="font-semibold text-white capitalize">{user?.plan} Plan</p>
+                    <p className="font-semibold text-white capitalize">{profile?.plan || 'free'} Plan</p>
                     <p className="text-sm text-gray-400">
-                      {user?.plan === 'free'
+                      {(profile?.plan || 'free') === 'free'
                         ? 'Up to 10 credentials'
-                        : user?.plan === 'pro'
+                        : profile?.plan === 'pro'
                         ? 'Unlimited credentials + SMS reminders'
                         : 'Team features + compliance reports'}
                     </p>
                   </div>
-                  {user?.plan === 'free' && (
+                  {(profile?.plan || 'free') === 'free' && (
                     <Button className="bg-[#0066FF] hover:bg-[#0052CC]">Upgrade to Pro</Button>
                   )}
                 </div>

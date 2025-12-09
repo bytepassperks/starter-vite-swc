@@ -366,3 +366,7 @@ export const Constants = {
     Enums: {},
   },
 } as const
+
+// Re-export types from credential.ts for backward compatibility
+export type { Credential, User as Profile } from './credential';
+export type { User } from './credential';
