@@ -216,7 +216,7 @@ export const exportCredentialsToPDF = (credentials: Credential[], userName: stri
 
   <div class="footer">
     <p>© 2024 CertTracker. This report was generated automatically.</p>
-    <p>For questions, contact support@certtracker.app</p>
+    <p>For questions, contact support@certtracker.net</p>
   </div>
 
   <script>

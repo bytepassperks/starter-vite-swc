@@ -141,8 +141,8 @@ export function ContactPage() {
                     </div>
                     <div>
                       <p className="text-white font-medium">Email</p>
-                      <a href="mailto:support@certtracker.io" className="text-gray-400 hover:text-blue-400 transition-colors">
-                        support@certtracker.io
+                      <a href="mailto:support@certtracker.net" className="text-gray-400 hover:text-blue-400 transition-colors">
+                        support@certtracker.net
                       </a>
                     </div>
                   </div>
